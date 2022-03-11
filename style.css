@@ -1,0 +1,65 @@
+html,*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    background-color: rgb(32, 32, 32) !important;
+    color: white !important;
+}
+
+.main{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    min-height: 600px;
+    margin-top: 20px;
+    font-family: 'Comfortaa', cursive;
+}
+
+.title > h1{
+    text-align: center;
+    border-bottom: 1px solid white;
+    font-size: calc(4rem + 0.4vw);
+}
+
+.grid-layout{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    width: 455px;
+    height: 455px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    border: 1px solid orange;
+    font-size: 5rem;
+}
+
+.options{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#resetBtn{
+    background-color: transparent ;
+    border: 1px solid orange;
+    color: orange;
+    width: 200px;
+    padding: 20px;
+    font-size: 1.4rem;
+}
