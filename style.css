@@ -63,3 +63,24 @@ body{
     padding: 20px;
     font-size: 1.4rem;
 }
+
+@media screen and (max-width: 500px){
+    .title > h1{
+        font-size: calc(2.4rem + 0.4vw);
+    }
+
+    .grid-layout{
+        width: 365px;
+        height: 365px;
+    }
+
+    .field{
+        width: 120px;
+        height: 120px;
+    }
+
+    #resetBtn{
+        width: 150px;
+        padding: 15px;
+    }
+}

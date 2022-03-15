@@ -95,21 +95,19 @@ const Game = ((GameBoard, player1, player2) => {
         roundNumber = 0;
     }
 
-    const alertWinner = (winner) => {
-        alert(`The winner is ${winner.name}`);
-    }
-
     const resetGame = () => {
         GameBoard.gameBoardArr = GameBoard.resetGameBoard();
         currentPlayer = player1;
         roundNumber = 0;
     }
 
-    return {newRound, checkWinner, endGame, getCurrentPlayer, alertWinner, resetGame};
+    return {newRound, checkWinner, endGame, getCurrentPlayer, resetGame};
 })(GameBoard, player1, player2);
 
 
 const displayController = ((doc) => {
+    const mainCont = doc.querySelector(".main");
+    const gridLayout = doc.querySelector(".grid-layout");
     const playAreas = doc.querySelectorAll(".field");
     const resetBtn = doc.querySelector("#resetBtn");
 
@@ -123,7 +121,7 @@ const displayController = ((doc) => {
         if (result === true) {
             diableClick();
             displayWinnerFields(arr);
-            console.log(currentPlayer);
+            showWinner(currentPlayer);
             Game.endGame();
         }else if (result === false){
             diableClick();
@@ -152,18 +150,33 @@ const displayController = ((doc) => {
             const playAreaToShow = playAreas[idx];
             playAreaToShow.style.cssText = "background-color: rgba(98, 98, 98, 0.4);";
         }
-        // Hard coding here
-        const playAreaToShow = playAreas[arr[-1]];
-        playAreaToShow.style.cssText = "background-color: rgba(98, 98, 98, 0.4);";
     }
 
     function resetDisplay (){
-        for(const playArea of playAreas){
-            Game.resetGame();
+        for(const playArea of playAreas){     
             playArea.textContent = "";
             playArea.style.backgroundColor = "";
             enableClick();
         }
+        Game.resetGame();
+        removeWinnerCon();
+    }
+
+    function showWinner(winner){
+        const div = doc.createElement("div");
+        div.classList.add("result-con");
+        const text = doc.createElement("p");
+        text.textContent = `Player ${winner.userItem} has won!`;
+        div.appendChild(text);
+
+        gridLayout.parentNode.insertBefore(div, gridLayout);
+    }
+
+    function removeWinnerCon(){
+        try {
+            const resultCon = doc.querySelector(".result-con");
+            mainCont.removeChild(resultCon);
+        } catch (error) {}
     }
 
     return {enableClick}
